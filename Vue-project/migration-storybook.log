@@ -1,0 +1,140 @@
+🔎 checking possible migrations..
+
+🔎 found a 'new-frameworks' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                      │
+│   We've detected your project is not fully setup with the new framework format, which was introduced in Storybook 7.                 │
+│                                                                                                                                      │
+│   Storybook 7 introduced the concept of frameworks, which abstracts configuration for renderers (e.g. React, Vue), builders (e.g.    │
+│   Webpack, Vite) and defaults to make integrations easier.                                                                           │
+│                                                                                                                                      │
+│   Your project should be updated to use Storybook's framework: @storybook/vue3-webpack5. We can attempt to do this for you           │
+│   automatically.                                                                                                                     │
+│                                                                                                                                      │
+│   Here are the steps this migration will do to migrate your project:                                                                 │
+│   - Remove the core.builder field in .storybook\main.js.                                                                             │
+│                                                                                                                                      │
+│                                                                                                                                      │
+│   To learn more about the new framework format, see:                                                                                 │
+│   https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#new-framework-api                                                  │
+│                                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'new-frameworks' migration on your project? » (Y/n)√ Do you want to run the 'new-frameworks' migration on your project? ... yes
+✅ Updating main.js
+✅ Updating "framework" field
+✅ Removing "core.builder" field
+✅ Removing "core" field
+✅ ran new-frameworks migration
+Unable to find .eslintrc config file, skipping
+
+🔎 found a 'remove-argtypes-regex' migration:
+╭ Manual migration detected ────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                               │
+│   Attention: We've detected that you're using argTypesRegex:                                                  │
+│                                                                                                               │
+│   .storybook\preview.js                                                                                       │
+│     1 | export const parameters = {                                                                           │
+│   > 2 |   actions: { argTypesRegex: "^on[A-Z].*" },                                                           │
+│       |              ^^^^^^^^^^^^^                                                                            │
+│     3 |   controls: {                                                                                         │
+│     4 |     matchers: {                                                                                       │
+│     5 |       color: /(background|color)$/i,                                                                  │
+│                                                                                                               │
+│   In Storybook you can write so-called play functions, which are used to render your stories interactively.   │
+│   Mocking action args in play functions was done implicitly by analyzing the argTypesRegex.                   │
+│                                                                                                               │
+│   Since Storybook 8, implicit action args mocking isn't supported anymore.                                    │
+│                                                                                                               │
+│   Use the following command to check for mocked action usages in your play functions:                         │
+│   npx storybook migrate find-implicit-spies --glob="**/*.stories.@(js|jsx|ts|tsx)"                            │
+│                                                                                                               │
+│   And follow the documentation to migrate your play functions:                                                │
+│   https://storybook.js.org/docs/8.0/essentials/actions#via-storybooktest-fn-spy-function                      │
+│                                                                                                               │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+? Select continue once you have made the required changes, or quit to exit the migration process » quit / continue√ Select continue once you have made the required changes, or quit to exit the migration process ... quit / continue
+
+🔎 found a 'webpack5-compiler-setup' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                      │
+│   Storybook's Webpack5 builder is now compiler agnostic, meaning you can choose a compiler addon that best fits your project:        │
+│                                                                                                                                      │
+│   - Babel: A vast ecosystem and is battle-tested. It's a robust choice if you have an extensive Babel setup or need specific Babel   │
+│   plugins for your project.                                                                                                          │
+│   - SWC:  Fast and easy to configure. Ideal if you want faster builds and have a straightforward configuration without the need      │
+│   for Babel's extensibility.                                                                                                         │
+│                                                                                                                                      │
+│   In the next step, Storybook will ask you to choose a compiler to automatically set it up for you.                                  │
+│                                                                                                                                      │
+│   After the migration, you can switch Webpack5 compilers by swapping the addon in your project.                                      │
+│   You can find more information here: https://storybook.js.org/docs/8.0/builders/webpack#compiler-support                            │
+│                                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'webpack5-compiler-setup' migration on your project? » (Y/n)√ Do you want to run the 'webpack5-compiler-setup' migration on your project? ... yes
+? Which compiler would you like to use? » - Use arrow-keys. Return to submit.
+>   Babel - Choose Babel for a vast ecosystem and battle-tested reliability.
+    SWC
+√ Which compiler would you like to use? » Babel
+Verifying @storybook/addon-webpack5-compiler-babel
+Installing @storybook/addon-webpack5-compiler-babel@^3.0.3
+
+An error occurred while installing dependencies:
+YARN2 error
+
+Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+❌ error when running webpack5-compiler-setup migration
+HandledError: Error: YARN2 error
+
+Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+    at Yarn2Proxy.addDependencies (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\core-common\dist\index.js:33:75)
+    at async add (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\cli\dist\generate.js:185:722)
+    ... 4 lines matching cause stack trace ...
+    at async Command.<anonymous> (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\cli\dist\generate.js:664:2799) {
+  handled: true,
+  cause: Error: YARN2 error
+  
+  Please check the logfile generated at ./storybook.log for troubleshooting and try again.
+      at Yarn2Proxy.runAddDeps (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\core-common\dist\index.js:39:6618)
+      at async Yarn2Proxy.addDependencies (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\core-common\dist\index.js:32:927)
+      at async add (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\cli\dist\generate.js:185:722)
+      at async Object.run (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\cli\dist\generate.js:499:485)
+      at async runFixes (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\cli\dist\generate.js:598:1794)
+      at async automigrate (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\cli\dist\generate.js:596:1629)
+      at async doAutomigrate (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\cli\dist\generate.js:596:651)
+      at async Command.<anonymous> (C:\Users\adelh\AppData\Local\npm-cache\_npx\eb8bf615e50a412a\node_modules\@storybook\cli\dist\generate.js:664:2799)
+}
+
+
+╭ Migration check ran with failures ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                      │
+│   Successful migrations:                                                                                                             │
+│                                                                                                                                      │
+│   new-frameworks                                                                                                                     │
+│                                                                                                                                      │
+│   Failed migrations:                                                                                                                 │
+│                                                                                                                                      │
+│   webpack5-compiler-setup:                                                                                                           │
+│   Error: YARN2 error                                                                                                                 │
+│                                                                                                                                      │
+│   Please check the logfile generated at ./storybook.log for troubleshooting and try again.                                           │
+│                                                                                                                                      │
+│   You can find the full logs in C:\Users\adelh\Vue-project\migration-storybook.log                                                   │
+│                                                                                                                                      │
+│   Manual migrations:                                                                                                                 │
+│                                                                                                                                      │
+│   remove-argtypes-regex                                                                                                              │
+│                                                                                                                                      │
+│   ─────────────────────────────────────────────────                                                                                  │
+│                                                                                                                                      │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook@next automigrate'                               │
+│                                                                                                                                      │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to migrate to the       │
+│   latest version of Storybook.                                                                                                       │
+│                                                                                                                                      │
+│   Please check the changelog and migration guide for manual migrations and more information:                                         │
+│   https://storybook.js.org/docs/8.0/migration-guide                                                                                  │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                                            │
+│                                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+

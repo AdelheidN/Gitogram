@@ -1,0 +1,17 @@
+➤ YN0000: · Yarn 4.1.1
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0060: │ @vue/cli-service is listed by your project with version 5.0.8, which doesn't satisfy what @vue/cli-plugin-eslint (pf90b8) requests (^3.0.0 || ^4.0.0-0).
+➤ YN0002: │ gitogram@workspace:. doesn't provide webpack (p6025b), requested by vue-loader.
+➤ YN0002: │ gitogram@workspace:. doesn't provide webpack (p6f7bb), requested by sass-loader.
+➤ YN0002: │ gitogram@workspace:. doesn't provide webpack (pd184c), requested by babel-loader.
+➤ YN0086: │ Some peer dependencies are incorrectly met; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 323ms
+➤ YN0000: ┌ Link step
+➤ YN0007: │ node-sass@npm:7.0.3 must be built because it never has been before or the last one failed
+➤ YN0009: │ node-sass@npm:7.0.3 couldn't be built successfully (exit code 1, logs can be found here: C:\Users\adelh\AppData\Local\Temp\xfs-f65916d7\build.log)
+➤ YN0000: └ Completed in 1s 625ms
+➤ YN0000: · Failed with errors in 2s 139ms
